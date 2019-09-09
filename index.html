@@ -13,7 +13,6 @@
 function parseFile(file, options) {
     var fileSize = file.size
     var chunkSize = 1024 * 1024
-    var binary = true
     var offset = 0
     var readBlock = null
     var chunkReadCallback = function(data) {
@@ -45,11 +44,7 @@ function parseFile(file, options) {
         var r = new FileReader()
         var blob = _file.slice(_offset, length + _offset);
         r.onload = onLoadHandler
-        if (binary) {
-          r.readAsArrayBuffer(blob)
-        } else {
-          r.readAsText(blob)
-        }
+        r.readAsArrayBuffer(blob)
     }
 
     readBlock(offset, chunkSize, file)
