@@ -2,30 +2,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Skeleton</title>
+<title>Huge File Reader</title>
 </head>
 <body>
     
     <script>
 
+(function() {
+
 var count = 0
 
 function parseFile(file, options) {
-    var opts = typeof options === 'undefined' ? {} : options
     var fileSize = file.size
-    var chunkSize = typeof opts['chunk_size'] === 'undefined' ?
-        1024 * 1024 : parseInt(opts['chunk_size'])
-    var binary = typeof opts['binary'] === 'undefined' ?
-        false : opts['binary'] == true
+    var chunkSize = 1024 * 1024
+    var binary = true
     var offset = 0
     var readBlock = null
-    var chunkReadCallback = typeof opts['chunk_read_callback'] === 'function' ?
-        opts['chunk_read_callback'] : function() {}
-    var chunkErrorCallback = typeof opts['error_callback'] === 'function' ?
-        opts['error_callback'] : function() {}
-    var success = typeof opts['success'] === 'function' ?
-        opts['success'] : function() {}
-
+    var chunkReadCallback = function(data) {
+        // send data to server
+    }
+    var chunkErrorCallback = function(err) {
+        console.log('ERROR', err)
+    }
+    var success = function(count) {
+        console.log('Yes :)))) ' + count)
+    }
     var onLoadHandler = function(evt) {
         if (evt.target.error == null) {
             offset += evt.loaded
@@ -60,21 +61,13 @@ function parseFile(file, options) {
 window.ondragover = function() { return false }
 window.ondrop = function(e) { 
     if (e.dataTransfer.files.length > 0) {
-        parseFile(e.dataTransfer.files[0], {
-            chunk_read_callback: function(data) {
-                // console.log(data)
-            },
-            success: function(count) {
-                console.log('Yes :)))) ' + count)
-            },
-            error_callback: function() {
-                console.log('ERROR')
-            }
-        })
+        parseFile(e.dataTransfer.files[0])
         console.log(e.dataTransfer.files[0])
     }
     return false 
 }
+
+})()
 
     </script>
 </body>
