@@ -4,11 +4,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Huge File Reader</title>
 </head>
-<body>
-    
+<body style="margin:0;font-family:sans-serif">
+    <div id="progress">Drop a file...</div>
     <script>
 
 (function() {
+
+var progress = document.getElementById('progress')
+
+progress.style.background = '#396'
+progress.style.color = '#fff'
+progress.style.fontWeight = 'bold'
+progress.style.padding = '5px'
+progress.style.display = 'block'
+progress.style.height = '20px'
+progress.style.whiteSpace = 'nowrap'
 
 function parseFile(file, options) {
     var fileSize = file.size
@@ -24,6 +34,9 @@ function parseFile(file, options) {
     var success = function(count) {
         console.log('Yes :)))) ' + count)
     }
+    var trouble = function(count) {
+        console.log('Trouble????? ' + count)
+    }
     var onLoadHandler = function(evt) {
         if (evt.target.error == null) {
             offset += evt.loaded
@@ -32,8 +45,14 @@ function parseFile(file, options) {
             chunkErrorCallback(evt.target.error)
             return
         }
-        if (offset >= fileSize) {
+        var percentage = Math.round((offset / fileSize) * 100)
+        progress.innerHTML = file.name + ' &nbsp; ' + percentage + '%'
+        progress.style.width = percentage + '%'
+        if (offset === fileSize) {
             success(offset)
+            return
+        } else if (offset > fileSize) {
+            trouble(offset)
             return
         }
 
