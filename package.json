@@ -1,0 +1,25 @@
+{
+  "name": "flextube",
+  "version": "1.0.0",
+  "description": "better than youtube",
+  "main": "server.js",
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "express": "^4.6.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkoster/filereader.git"
+  },
+  "author": "Niels Koster",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nkoster/filereader/issues"
+  },
+  "homepage": "https://github.com/nkoster/filereader#readme"
+}
