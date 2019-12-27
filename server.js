@@ -27,6 +27,9 @@ io.on('connection', socket => {
             fs.appendFile(socket.upload, chunk, err => {
                 if (err) {
                   console.error(err)
+                } else {
+                    socket.emit('appended')
+                    console.log('appended')
                 }
             })
         }
