@@ -4,7 +4,7 @@
   "description": "better than youtube",
   "main": "server.js",
   "dependencies": {
-    "ejs": "^1.0.0",
+    "ejs": "^2.5.5",
     "express": "^4.6.1",
     "socket.io": "^2.3.0"
   },
