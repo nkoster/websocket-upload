@@ -14,16 +14,22 @@ io.on('connection', socket => {
     console.log('a user connected')
     console.log(socket.rooms)
     socket.on('upload', data => {
-        socket.upload = '/tmp/' + data.filename
-        console.log(socket.upload)
-        socket.fd = fs.openSync(socket.upload, 'w')
+        if (typeof data.filename === 'string') {
+            socket.upload = '/tmp/' + data.filename
+            console.log(socket.upload)
+            socket.fd = fs.openSync(socket.upload, 'w')    
+        } else {
+            socket.upload = () => {}
+        }
     })
     socket.on('chunk', chunk => {
-        fs.appendFile(socket.upload, chunk, err => {
-            if (err) {
-              console.error(err)
-            }
-        })
+        if (socket.upload) {
+            fs.appendFile(socket.upload, chunk, err => {
+                if (err) {
+                  console.error(err)
+                }
+            })
+        }
     })
 })
   
