@@ -5,16 +5,15 @@ const
 
 app.set('view engine', 'ejs');
 
-// app.use(.static('public'));
-
 app.get('/', (req, res) => {
     res.render('index')
 })
 
-io.on('connection', function(socket) {
+io.on('connection', (socket) => {
     console.log('a user connected')
+    console.log(socket.rooms)
 })
   
-http.listen(9999, function(){
+http.listen(9999, () => {
     console.log('listening on *:9999')
 })
