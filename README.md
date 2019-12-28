@@ -1,4 +1,4 @@
-# filereader
+# Web Socket Upload
 
 Upload a huge file in chunks with over a web socket connection.
 I'm using the socket.io web socket framework for server and client web socket logic. 
