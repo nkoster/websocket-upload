@@ -12,7 +12,7 @@ Usage:
 
 ```
 git clone https://github.com/nkoster/websocket-upload
-cd filereader
+cd websocket-upload
 npm install
 ./node_modules/nodemon/bin/nodemon.js server.js
 ````
