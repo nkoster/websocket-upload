@@ -16,3 +16,5 @@ cd websocket-upload
 npm install
 ./node_modules/nodemon/bin/nodemon.js server.js
 ````
+
+Before uploading, an MD5 sum is calculated. This is for the future.
