@@ -11,7 +11,7 @@ This is currently an experiment in progress. I'm very open for comments.
 Usage:
 
 ```
-git clone https://github.com/nkoster/filereader
+git clone https://github.com/nkoster/websocket-upload
 cd filereader
 npm install
 ./node_modules/nodemon/bin/nodemon.js server.js
