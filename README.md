@@ -2,7 +2,7 @@
 
 Upload a huge file in chunks over a web socket connection.
 I'm using the [https://socket.io/](socket.io) web socket framework (thanks, very cool!) for server and client web socket logic. 
-Front JS borrowed from Alessandro Diaferia. (Thank you!)
+Front JS is based on a gist from Alessandro Diaferia. (Thank you!)
 https://gist.github.com/alediaferia/cfb3a7503039f9278381
 
 DISCLAIMER: I'm not sure if this is a good idea, but it actually works.
