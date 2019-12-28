@@ -11,12 +11,11 @@ app.get('/', (req, res) => {
 })
 
 io.on('connection', socket => {
-    console.log('a user connected')
-    console.log(socket.rooms)
+    console.log(socket.handshake.address)
     socket.on('upload', data => {
         if (typeof data.filename === 'string') {
             socket.upload = '/tmp/' + data.filename
-            console.log(socket.upload)
+            console.log('Receiving ' + socket.upload)
             socket.fd = fs.openSync(socket.upload, 'w')    
         } else {
             socket.upload = () => {}
@@ -26,13 +25,15 @@ io.on('connection', socket => {
         if (socket.upload) {
             fs.appendFile(socket.upload, chunk, err => {
                 if (err) {
-                  console.error(err)
+                    console.error(err)
                 } else {
-                    socket.emit('appended')
-                    console.log('appended')
+                    // console.log(chunk.length)
                 }
             })
         }
+    })
+    socket.on('ready', () => {
+        console.log('ready')
     })
 })
   
