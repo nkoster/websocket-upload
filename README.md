@@ -20,4 +20,5 @@ npm install
 Open http://localhost:9999 and drag-and-drop a file in the page.
 
 Before uploading, an MD5 sum is calculated. This is for the future.
-I'm using [https://github.com/satazor/js-spark-md5](js-spark-md5) from André Cruz. Obrigado!
+I'm using [https://github.com/satazor/js-spark-md5](js-spark-md5) from André Cruz
+for the in-fly MD5 calculation. Obrigado!
