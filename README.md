@@ -18,7 +18,7 @@ npm install
 ````
 
 Open http://localhost:9999 and drag-and-drop a file in the page.
-Any Uploaded file will appear in /tmp/, in this example.
+An uploaded file will appear in /tmp/, in this example.
 
 Before uploading, an MD5 sum is calculated. This is for the future.
 I'm using [https://github.com/satazor/js-spark-md5](js-spark-md5) from André Cruz
