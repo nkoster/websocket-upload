@@ -27,7 +27,7 @@ io.on('connection', socket => {
                 if (err) {
                     console.error(err)
                 } else {
-                    // console.log(chunk.length)
+                    socket.emit('appended')
                 }
             })
         }
