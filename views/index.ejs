@@ -6,15 +6,21 @@
 </head>
 <body style="margin:0;font-family:sans-serif;background:#4c8;">
     <div id="progress">Drop a file...</div>
-    <script src="//cdn.rawgit.com/satazor/SparkMD5/master/spark-md5.min.js"></script>
+    <pre id="result"></pre>
+    <script src="https://cdn.rawgit.com/satazor/SparkMD5/master/spark-md5.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
 
 (function() {
+  const resultEl = document.querySelector('#result')
 var chunkSize = 1024 * 1024 * 4
 var socket = io()
 socket.on('appended', () => {
     console.log('chunk appended')
+})
+socket.on('result', result => {
+  resultEl.innerText = JSON.stringify(result, null, 2)
+    console.log('RESULT', result)
 })
 var progress = document.getElementById('progress')
 progress.style.background = '#396'
